@@ -1,0 +1,148 @@
+/* Reset e Estilos Globais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.container {
+    max-width: 960px;
+    margin: auto;
+    overflow: hidden;
+    padding: 0 20px;
+}
+
+/* Cabeçalho e Navegação */
+header {
+    background: #333;
+    color: #fff;
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 960px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+header .logo {
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 1.5rem;
+}
+
+header ul {
+    list-style: none;
+    display: flex;
+}
+
+header ul li {
+    margin-left: 20px;
+}
+
+header ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Seções */
+section {
+    padding: 80px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+section h2 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#inicio {
+    background: #333;
+    color: #fff;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#inicio h1 {
+    font-size: 3rem;
+}
+
+#quemsomos {
+    background: #fff;
+}
+
+#servicos {
+    background: #f9f9f9;
+}
+
+#dedetizacao {
+    background: #fff;
+}
+
+#contato {
+    background: #f9f9f9;
+}
+
+.contato-info {
+    text-align: center;
+}
+
+.contato-info p {
+    margin-bottom: 10px;
+}
+
+.contato-info a {
+    color: #333;
+    text-decoration: none;
+}
+
+/* Rodapé */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #333;
+    color: #fff;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    header nav {
+        flex-direction: column;
+    }
+
+    header ul {
+        padding-top: 10px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    header ul li {
+        margin: 5px 0;
+    }
+
+    #inicio h1 {
+        font-size: 2rem;
+    }
+}

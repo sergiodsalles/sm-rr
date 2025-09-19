@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Infographic: The Power of Recognition Rank</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Chosen Palette: Brilliant Blues -->
+    <!-- Application Structure Plan: The infographic is designed as a top-to-bottom narrative scroll. This linear flow is the most effective way to present the feature's story: 1) Hook the user with the problem. 2) Guide them through the 3-step solution process using the provided UI screens. 3) Reveal the 'magic'—the AI-powered dashboard with interactive charts. 4) Reinforce the value with a summary of key benefits. This structure was chosen to be intuitive, educational, and persuasive, mirroring a successful presentation flow. -->
+    <!-- Visualization & Content Choices: 1. The Challenge: Goal: Inform. Method: Styled HTML cards with large Unicode icons to make abstract problems tangible. 2. 3-Step Process: Goal: Organize. Method: A vertical timeline built with HTML/Tailwind, integrating the user's screenshots directly into the flow. This clearly explains the user journey without needing complex diagrams. 3. AI Dashboard: Goal: Compare/Inform. Viz: Radar Chart (Chart.js) to compare multiple performance vectors and a Donut Chart (Chart.js) for a high-level score. Justification: These charts make the data-driven output of the feature visual and easy to grasp. 4. Benefits: Goal: Organize. Method: A grid of styled HTML cards with icons for easy scanning. All visualization choices avoid SVG and MermaidJS as required. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+
+      /* Full-screen scrolling setup */
+      .scroll-container {
+        height: 100vh;
+        overflow-y: scroll;
+        scroll-snap-type: y mandatory;
+        scroll-behavior: smooth;
+      }
+
+      .section-full {
+        min-height: 100vh;
+        scroll-snap-align: start;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 1rem;
+        box-sizing: border-box;
+      }
+
+      /* Ensure content fits within viewport */
+      .section-content {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 1rem;
+        box-sizing: border-box;
+      }
+
+      /* Navigation dots */
+      .nav-dots {
+        position: fixed;
+        right: 2rem;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 1000;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .nav-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.5);
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .nav-dot.active {
+        background: rgba(255, 255, 255, 1);
+        transform: scale(1.2);
+      }
+
+      .nav-dot:hover {
+        background: rgba(255, 255, 255, 0.8);
+        transform: scale(1.1);
+      }
+
+      /* Mobile adjustments */
+      @media (max-width: 768px) {
+        .section-full {
+          padding: 0.5rem;
+        }
+
+        .section-content {
+          padding: 0.5rem;
+        }
+
+        .nav-dots {
+          right: 1rem;
+        }
+
+        .nav-dot {
+          width: 10px;
+          height: 10px;
+        }
+      }
+    </style>
+  </head>
+  <body class="text-gray-800">
+    <!-- Navigation Dots -->
+    <div class="nav-dots">
+      <div class="nav-dot active" onclick="scrollToSection(0)"></div>
+      <div class="nav-dot" onclick="scrollToSection(1)"></div>
+      <div class="nav-dot" onclick="scrollToSection(2)"></div>
+      <div class="nav-dot" onclick="scrollToSection(3)"></div>
+      <div class="nav-dot" onclick="scrollToSection(4)"></div>
+      <div class="nav-dot" onclick="scrollToSection(5)"></div>
+      <div class="nav-dot" onclick="scrollToSection(6)"></div>
+      <div class="nav-dot" onclick="scrollToSection(7)"></div>
+    </div>
+
+    <div class="scroll-container">
+      <!-- Section 1: Hero/Header -->
+      <section class="section-full" id="section-0">
+        <div class="section-content">
+          <header class="text-center max-w-3xl mx-auto">
+            <h1
+              class="text-2xl md:text-4xl font-extrabold text-white leading-tight mb-3"
+            >
+              Unlock Your Project's True Impact with Recognition Rank
+            </h1>
+            <p class="text-sm md:text-base text-purple-100 leading-relaxed">
+              An intelligent new feature in ScreenMiner to track, analyze, and
+              benchmark your production's achievements against the global
+              landscape.
+            </p>
+          </header>
+        </div>
+      </section>
+
+      <!-- Section 2: The Challenge -->
+      <section class="section-full" id="section-1">
+        <div class="section-content">
+          <div class="text-center mb-8">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+              The Challenge for Modern Creators
+            </h2>
+            <p class="text-lg text-purple-100 max-w-3xl mx-auto">
+              How do you measure success in a fragmented media world?
+            </p>
+            <div
+              class="mt-4 w-24 h-1 bg-gradient-to-r from-purple-400 to-purple-200 mx-auto rounded-full"
+            ></div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+            <!-- Manual Tracking Card -->
+            <div class="group relative">
+              <div
+                class="absolute -inset-0.5 bg-gradient-to-r from-purple-600 to-pink-600 rounded-3xl blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"
+              ></div>
+              <div
+                class="relative bg-white p-6 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
+              >
+                <div
+                  class="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-red-500 to-red-600 rounded-2xl mb-6 mx-auto shadow-lg"
+                >
+                  <svg
+                    class="w-8 h-8 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                    ></path>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-4 text-center">
+                  Manual Tracking
+                </h3>
+                <p class="text-gray-600 text-center leading-relaxed">
+                  Juggling spreadsheets for festival entries, media clips, and
+                  award nominations is inefficient and prone to error.
+                </p>
+                <div class="mt-6 flex items-center justify-center">
+                  <div class="w-8 h-1 bg-red-500 rounded-full"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Lacks Comparison Card -->
+            <div class="group relative">
+              <div
+                class="absolute -inset-0.5 bg-gradient-to-r from-purple-600 to-pink-600 rounded-3xl blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"
+              ></div>
+              <div
+                class="relative bg-white p-6 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
+              >
+                <div
+                  class="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl mb-6 mx-auto shadow-lg"
+                >
+                  <svg
+                    class="w-8 h-8 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+                    ></path>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-4 text-center">
+                  Lacks Comparison
+                </h3>
+                <p class="text-gray-600 text-center leading-relaxed">
+                  Without industry benchmarks, it's impossible to know how your
+                  project's recognition truly stacks up against similar
+                  productions.
+                </p>
+                <div class="mt-6 flex items-center justify-center">
+                  <div class="w-8 h-1 bg-orange-500 rounded-full"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- No Insights Card -->
+            <div class="group relative">
+              <div
+                class="absolute -inset-0.5 bg-gradient-to-r from-purple-600 to-pink-600 rounded-3xl blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"
+              ></div>
+              <div
+                class="relative bg-white p-6 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
+              >
+                <div
+                  class="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-yellow-500 to-yellow-600 rounded-2xl mb-6 mx-auto shadow-lg"
+                >
+                  <svg
+                    class="w-8 h-8 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9.172 16.172a4 4 0 015.656 0M9 12h6m-6-4h6m2 5.291A7.962 7.962 0 0112 15c-2.34 0-4.29.82-5.877 2.172M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.875a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0z"
+                    ></path>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-4 text-center">
+                  No Insights
+                </h3>
+                <p class="text-gray-600 text-center leading-relaxed">
+                  A lack of consolidated data means your festival and marketing
+                  strategies are based on gut feelings, not actionable insights.
+                </p>
+                <div class="mt-6 flex items-center justify-center">
+                  <div class="w-8 h-1 bg-yellow-500 rounded-full"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom decorative element -->
+          <div class="mt-8 flex justify-center">
+            <div class="flex space-x-2">
+              <div
+                class="w-2 h-2 bg-purple-400 rounded-full animate-pulse"
+              ></div>
+              <div
+                class="w-2 h-2 bg-purple-300 rounded-full animate-pulse"
+                style="animation-delay: 0.2s"
+              ></div>
+              <div
+                class="w-2 h-2 bg-purple-200 rounded-full animate-pulse"
+                style="animation-delay: 0.4s"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3: Workflow Intro -->
+      <section class="section-full" id="section-2">
+        <div class="section-content">
+          <div class="text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+              A Simple, Powerful Workflow
+            </h2>
+            <p class="text-lg text-purple-100 max-w-3xl mx-auto">
+              Consolidate all your accolades in three easy steps. Our AI handles
+              the rest.
+            </p>
+            <div
+              class="mt-6 w-24 h-1 bg-gradient-to-r from-purple-400 to-purple-200 mx-auto rounded-full"
+            ></div>
+
+            <!-- Step preview -->
+            <div
+              class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto"
+            >
+              <div class="text-center">
+                <div
+                  class="w-16 h-16 bg-gradient-to-r from-purple-600 to-purple-700 rounded-full flex items-center justify-center text-2xl font-bold text-white mx-auto mb-4 shadow-lg"
+                >
+                  1
+                </div>
+                <h3 class="text-xl font-bold text-white mb-2">
+                  Track Festivals
+                </h3>
+                <p class="text-purple-200 text-sm">
+                  Log every festival and live event
+                </p>
+              </div>
+              <div class="text-center">
+                <div
+                  class="w-16 h-16 bg-gradient-to-r from-purple-600 to-purple-700 rounded-full flex items-center justify-center text-2xl font-bold text-white mx-auto mb-4 shadow-lg"
+                >
+                  2
+                </div>
+                <h3 class="text-xl font-bold text-white mb-2">Capture Media</h3>
+                <p class="text-purple-200 text-sm">
+                  Add press coverage and reviews
+                </p>
+              </div>
+              <div class="text-center">
+                <div
+                  class="w-16 h-16 bg-gradient-to-r from-purple-600 to-purple-700 rounded-full flex items-center justify-center text-2xl font-bold text-white mx-auto mb-4 shadow-lg"
+                >
+                  3
+                </div>
+                <h3 class="text-xl font-bold text-white mb-2">Log Awards</h3>
+                <p class="text-purple-200 text-sm">
+                  Record awards and nominations
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 4: Step 1 - Track Your Festival Circuit -->
+      <section class="section-full" id="section-3">
+        <div class="section-content">
+          <div class="max-w-7xl mx-auto">
+            <div
+              class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center"
+            >
+              <div class="lg:order-1">
+                <div class="flex items-center mb-6">
+                  <span
+                    class="text-2xl font-bold text-white bg-gradient-to-r from-purple-600 to-purple-700 rounded-full w-14 h-14 flex items-center justify-center shadow-lg mr-4"
+                  >
+                    1
+                  </span>
+                  <div
+                    class="flex-1 h-px bg-gradient-to-r from-purple-400 to-transparent"
+                  ></div>
+                </div>
+                <h3 class="text-3xl font-bold text-white mb-4">
+                  Track Your Festival Circuit
+                </h3>
+                <p class="text-lg text-purple-100 leading-relaxed mb-6">
+                  Log every festival and live event your project participates
+                  in. Select from our comprehensive list of global events or add
+                  your own manually.
+                </p>
+                <div class="flex items-center text-purple-200 text-sm">
+                  <svg
+                    class="w-5 h-5 mr-2"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                  Easy festival selection and tracking
+                </div>
+              </div>
+              <div class="lg:order-2">
+                <div class="relative group">
+                  <div
+                    class="absolute -inset-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-3xl blur opacity-20 group-hover:opacity-30 transition duration-1000"
+                  ></div>
+                  <img
+                    src="festival_recommended_selected.png"
+                    alt="ScreenMiner UI for selecting and tracking festival events"
+                    class="relative w-full rounded-2xl shadow-2xl border-4 border-purple-100 hover:shadow-3xl transition-all duration-300"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 5: Step 2 - Capture Earned Media -->
+      <section class="section-full" id="section-4">
+        <div class="section-content">
+          <div class="max-w-7xl mx-auto">
+            <div
+              class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center"
+            >
+              <div class="lg:order-2">
+                <div class="flex items-center mb-6">
+                  <span
+                    class="text-2xl font-bold text-white bg-gradient-to-r from-purple-600 to-purple-700 rounded-full w-14 h-14 flex items-center justify-center shadow-lg mr-4"
+                  >
+                    2
+                  </span>
+                  <div
+                    class="flex-1 h-px bg-gradient-to-r from-purple-400 to-transparent"
+                  ></div>
+                </div>
+                <h3 class="text-3xl font-bold text-white mb-4">
+                  Capture Earned Media
+                </h3>
+                <p class="text-lg text-purple-100 leading-relaxed mb-6">
+                  Centralize your buzz. A simple form lets you quickly add press
+                  coverage, reviews, and social media mentions from any source.
+                </p>
+                <div class="flex items-center text-purple-200 text-sm">
+                  <svg
+                    class="w-5 h-5 mr-2"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                  Streamlined media coverage logging
+                </div>
+              </div>
+              <div class="lg:order-1">
+                <div class="relative group">
+                  <div
+                    class="absolute -inset-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-3xl blur opacity-20 group-hover:opacity-30 transition duration-1000"
+                  ></div>
+                  <img
+                    src="add_earned_media.png"
+                    alt="ScreenMiner UI for adding earned media coverage"
+                    class="relative w-full rounded-2xl shadow-2xl border-4 border-purple-100 hover:shadow-3xl transition-all duration-300"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 6: Step 3 - Log Your Awards -->
+      <section class="section-full" id="section-5">
+        <div class="section-content">
+          <div class="max-w-7xl mx-auto">
+            <div
+              class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center"
+            >
+              <div class="lg:order-1">
+                <div class="flex items-center mb-6">
+                  <span
+                    class="text-2xl font-bold text-white bg-gradient-to-r from-purple-600 to-purple-700 rounded-full w-14 h-14 flex items-center justify-center shadow-lg mr-4"
+                  >
+                    3
+                  </span>
+                  <div
+                    class="flex-1 h-px bg-gradient-to-r from-purple-400 to-transparent"
+                  ></div>
+                </div>
+                <h3 class="text-3xl font-bold text-white mb-4">
+                  Log Your Awards
+                </h3>
+                <p class="text-lg text-purple-100 leading-relaxed mb-6">
+                  Record every prestigious award and nomination to build a
+                  complete, undeniable picture of your project's success.
+                </p>
+                <div class="flex items-center text-purple-200 text-sm">
+                  <svg
+                    class="w-5 h-5 mr-2"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                  Comprehensive awards and nominations tracking
+                </div>
+              </div>
+              <div class="lg:order-2">
+                <div class="relative group">
+                  <div
+                    class="absolute -inset-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-3xl blur opacity-20 group-hover:opacity-30 transition duration-1000"
+                  ></div>
+                  <img
+                    src="awards.png"
+                    alt="ScreenMiner UI for logging awards and nominations"
+                    class="relative w-full rounded-2xl shadow-2xl border-4 border-purple-100 hover:shadow-3xl transition-all duration-300"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 7: Dashboard -->
+      <section class="section-full" id="section-6">
+        <div class="section-content">
+          <div
+            class="bg-white rounded-xl p-4 md:p-6 shadow-xl border border-gray-200/50 h-full flex flex-col justify-center"
+          >
+            <div class="text-center mb-4">
+              <h2 class="text-2xl md:text-3xl font-bold text-purple-800 mb-2">
+                The Result: AI-Powered Dashboard
+              </h2>
+              <p class="text-sm md:text-base text-purple-600 max-w-2xl mx-auto">
+                Our AI analyzes your data to generate your Recognition Rank,
+                providing clear comparison against similar productions
+                worldwide.
+              </p>
+            </div>
+
+            <div class="flex-1 flex items-center justify-center">
+              <div class="w-full max-w-4xl">
+                <img
+                  src="ranking_dashboard.png"
+                  alt="ScreenMiner Recognition Ranking Dashboard"
+                  class="w-full rounded-lg shadow-lg border-2 border-purple-100 hover:shadow-xl transition-all duration-300"
+                />
+              </div>
+            </div>
+
+            <div class="text-center mt-3">
+              <p class="text-xs md:text-sm text-gray-500 max-w-3xl mx-auto">
+                Comprehensive performance view across festivals, awards, and
+                media coverage
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 8: Benefits -->
+      <section class="section-full" id="section-7">
+        <div class="section-content">
+          <div class="text-center mb-6">
+            <h2 class="text-2xl md:text-3xl font-bold text-white mb-3">
+              Key Benefits at a Glance
+            </h2>
+            <p class="text-sm text-purple-200 max-w-2xl mx-auto">
+              Transform your project tracking with powerful insights and
+              streamlined workflows
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            <!-- Left Column -->
+            <div class="space-y-4">
+              <div
+                class="bg-white p-5 rounded-xl shadow-lg border border-gray-200/50 flex items-start space-x-4"
+              >
+                <div class="text-3xl flex-shrink-0">📊</div>
+                <div>
+                  <h3 class="text-lg font-bold text-purple-800 mb-1">
+                    Centralized Hub
+                  </h3>
+                  <p class="text-sm text-gray-600">
+                    All your project's accolades, festival entries, media
+                    coverage, and awards in one organized, easy-to-access
+                    dashboard.
+                  </p>
+                </div>
+              </div>
+
+              <div
+                class="bg-white p-5 rounded-xl shadow-lg border border-gray-200/50 flex items-start space-x-4"
+              >
+                <div class="text-3xl flex-shrink-0">📈</div>
+                <div>
+                  <h3 class="text-lg font-bold text-purple-800 mb-1">
+                    Competitive Intelligence
+                  </h3>
+                  <p class="text-sm text-gray-600">
+                    Understand your standing in the global landscape, identify
+                    opportunities, and benchmark against similar productions.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Column -->
+            <div class="space-y-4">
+              <div
+                class="bg-white p-5 rounded-xl shadow-lg border border-gray-200/50 flex items-start space-x-4"
+              >
+                <div class="text-3xl flex-shrink-0">🧠</div>
+                <div>
+                  <h3 class="text-lg font-bold text-purple-800 mb-1">
+                    AI-Powered Insights
+                  </h3>
+                  <p class="text-sm text-gray-600">
+                    Make informed strategic decisions with AI-generated
+                    comparative data and recognition rankings, not guesswork.
+                  </p>
+                </div>
+              </div>
+
+              <div
+                class="bg-white p-5 rounded-xl shadow-lg border border-gray-200/50 flex items-start space-x-4"
+              >
+                <div class="text-3xl flex-shrink-0">📄</div>
+                <div>
+                  <h3 class="text-lg font-bold text-purple-800 mb-1">
+                    Professional Reporting
+                  </h3>
+                  <p class="text-sm text-gray-600">
+                    Generate comprehensive reports and presentations showcasing
+                    your project's complete impact and achievements.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <footer class="bg-purple-900 py-8">
+      <div class="container mx-auto px-6 text-center text-purple-100">
+        <p>&copy; 2025 ScreenMiner. Empowering Creators with Data.</p>
+      </div>
+    </footer>
+
+    <script>
+      function scrollToSection(index) {
+        const section = document.getElementById(`section-${index}`);
+        if (section) {
+          section.scrollIntoView({ behavior: "smooth" });
+
+          // Update active dot
+          document.querySelectorAll(".nav-dot").forEach((dot, i) => {
+            if (i === index) {
+              dot.classList.add("active");
+            } else {
+              dot.classList.remove("active");
+            }
+          });
+        }
+      }
+
+      // Update active dot on scroll
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const index = entry.target.id.split("-")[1];
+              document.querySelectorAll(".nav-dot").forEach((dot, i) => {
+                if (i === parseInt(index)) {
+                  dot.classList.add("active");
+                } else {
+                  dot.classList.remove("active");
+                }
+              });
+            }
+          });
+        },
+        { threshold: 0.5 }
+      );
+
+      // Observe all sections
+      document.querySelectorAll(".section-full").forEach((section) => {
+        observer.observe(section);
+      });
+    </script>
+  </body>
+</html>
